@@ -7,15 +7,18 @@ public class Excel {
     public Excel(String choice, int[] numbers){
         this.choice = choice;
         this.numbers = numbers;
+        SelectFun();
     }
 
     public void SelectFun(){
-        switch (this.choice) {
-            case "Autosum" -> Autosum();
-            case "Average" -> Average();
-            case "Max" -> Max();
-            case "Min" -> Min();
+        int result = 0;
+        switch(this.choice) {
+            case "Autosum" -> result=Autosum();
+            case "Average" -> result=Average();
+            case "Max" -> result=Max();
+            case "Min" -> result=Min();
         }
+        System.out.println(result);
     }
 
     private int Autosum(){
@@ -27,7 +30,6 @@ public class Excel {
     }
 
     private int Average(){
-        int result = 0;
         return Autosum()/numbers.length;
     }
 
@@ -42,12 +44,12 @@ public class Excel {
     }
 
     private int Min(){
-        int max = numbers[0];
+        int min = numbers[0];
         for(int i=0;i<=numbers.length;i++){
-            if(numbers[i]>max){
-                max = numbers[i];
+            if(numbers[i]<min){
+                min = numbers[i];
             }
         }
-        return max;
+        return min;
     }
 }

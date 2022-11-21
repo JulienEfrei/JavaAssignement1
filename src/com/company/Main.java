@@ -23,18 +23,20 @@ public class Main extends JFrame implements ActionListener {
     JRadioButton r2=new JRadioButton("Average");
     JRadioButton r3=new JRadioButton("Max");
     JRadioButton r4=new JRadioButton("Min");
+    JLabel l1=new JLabel("Enter the numbers");
 
 
-    public void main(String[] args) {
-        f.setVisible(true);
+    public Main() {
 
-        f.setSize(400,500);
+
+        f.setSize(800,500);
         text.setBounds(60,100,340, 30);
         b.setBounds(60,150,100, 40);
         r1.setBounds(60,200,100, 30);
         r2.setBounds(60,250,100, 30);
         r3.setBounds(60,300,100, 30);
         r4.setBounds(60,350,100, 30);
+        l1.setBounds(60,50,100, 30);
 
         r1.setActionCommand("Autosum");
         r2.setActionCommand("Average");
@@ -42,7 +44,6 @@ public class Main extends JFrame implements ActionListener {
         r4.setActionCommand("Min");
 
 
-        JLabel l1=new JLabel("Enter the numbers");
 
         bg.add(r1);
         bg.add(r2);
@@ -55,12 +56,19 @@ public class Main extends JFrame implements ActionListener {
         f.add(r2);
         f.add(r3);
         f.add(r4);
+        f.add(l1);
+
+        f.setVisible(true);
+        f.setLayout(null);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        b.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
         if(s.equals("submit")){
+            System.out.println("submit");
             String[] firstArray = text.getText().trim().split("\\s* \\s*");
             int[] numbers = Arrays.stream(firstArray).mapToInt(Integer::parseInt).toArray();
             Excel excel = new Excel(bg.getSelection().getActionCommand(), numbers);
