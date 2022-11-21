@@ -66,7 +66,7 @@ public class Main extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String s = e.getActionCommand();
+        String s = e.getActionCommand( );
         if(s.equals("submit")){
             System.out.println("submit");
             String[] firstArray = text.getText().trim().split("\\s* \\s*");
