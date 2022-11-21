@@ -7,10 +7,10 @@ public class Excel {
     public Excel(String choice, int[] numbers){
         this.choice = choice;
         this.numbers = numbers;
-        SelectFun();
+
     }
 
-    public void SelectFun(){
+    public int SelectFun(){
         System.out.println(choice);
         int result = 0;
         switch(this.choice) {
@@ -19,7 +19,7 @@ public class Excel {
             case "Max" -> result=Max();
             case "Min" -> result=Min();
         }
-        System.out.println(result);
+        return result;
     }
 
     private int Autosum(){
