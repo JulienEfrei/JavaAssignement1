@@ -66,11 +66,12 @@ public class Main extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String s = e.getActionCommand( );
+        String s = e.getActionCommand();
         if(s.equals("submit")){
             System.out.println("submit");
             String[] firstArray = text.getText().trim().split("\\s* \\s*");
             int[] numbers = Arrays.stream(firstArray).mapToInt(Integer::parseInt).toArray();
+            System.out.println(Arrays.toString(numbers));
             Excel excel = new Excel(bg.getSelection().getActionCommand(), numbers);
         }
     }

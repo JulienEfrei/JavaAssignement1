@@ -11,6 +11,7 @@ public class Excel {
     }
 
     public void SelectFun(){
+        System.out.println(choice);
         int result = 0;
         switch(this.choice) {
             case "Autosum" -> result=Autosum();
@@ -23,7 +24,7 @@ public class Excel {
 
     private int Autosum(){
         int result = 0;
-        for(int i=0; i <= numbers.length; i++){
+        for(int i=0; i <= numbers.length-1; i++){
             result += numbers[i];
         }
         return result;
@@ -35,7 +36,7 @@ public class Excel {
 
     private int Max(){
         int max = numbers[0];
-        for(int i=0;i<=numbers.length;i++){
+        for(int i=0;i<=numbers.length-1;i++){
             if(numbers[i]>max){
                 max = numbers[i];
             }
@@ -45,7 +46,7 @@ public class Excel {
 
     private int Min(){
         int min = numbers[0];
-        for(int i=0;i<=numbers.length;i++){
+        for(int i=0;i<=numbers.length-1;i++){
             if(numbers[i]<min){
                 min = numbers[i];
             }
