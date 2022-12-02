@@ -1,4 +1,4 @@
-package com.company;
+package gui_swing_events;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +8,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 
-public class Main extends JFrame implements ActionListener {
+
+public class SwingEventWindow extends JFrame implements ActionListener {
     JFrame f = new JFrame();
 
     JTextField text = new JTextField();
@@ -16,13 +17,14 @@ public class Main extends JFrame implements ActionListener {
     JTextArea area = new JTextArea();
 
     ButtonGroup bg = new ButtonGroup();
-    JRadioButton r1 = new JRadioButton("Autosum");
+    JRadioButton r1 = new JRadioButton("Autosum", true);
     JRadioButton r2 = new JRadioButton("Average");
     JRadioButton r3 = new JRadioButton("Max");
     JRadioButton r4 = new JRadioButton("Min");
+    private String choice;
 
 
-    public Main() {
+    public SwingEventWindow() {
         f.setSize(800, 500);
         text.setBounds(60, 100, 340, 30);
         b.setBounds(60, 150, 100, 40);
@@ -54,6 +56,9 @@ public class Main extends JFrame implements ActionListener {
         f.setLayout(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         b.addActionListener(this);
+
+        Excel excel ;
+        String choice = "";
     }
 
     @Override
@@ -64,8 +69,20 @@ public class Main extends JFrame implements ActionListener {
             String[] firstArray = text.getText().trim().split("\\s* \\s*");
             int[] numbers = Arrays.stream(firstArray).mapToInt(Integer::parseInt).toArray();
             System.out.println(Arrays.toString(numbers));
-            Excel excel = new Excel(bg.getSelection().getActionCommand(), numbers);
-            area.setText(String.valueOf(excel.SelectFun()));
+            Excel excel = new Excel(numbers);
+            this.choice = bg.getSelection().getActionCommand();
+            area.setText(String.valueOf(SelectFun()));
         }
+    }
+    public int SelectFun(){
+        System.out.println(this.choice);
+        int result = 0;
+        switch(this.choice) {
+            case "Autosum" -> result=Excel.Autosum();
+            case "Average" -> result=Excel.Average();
+            case "Max" -> result=Excel.Max();
+            case "Min" -> result=Excel.Min();
+        }
+        return result;
     }
 }

@@ -1,28 +1,16 @@
-package com.company;
+package gui_swing_events;
 
 public class Excel {
     String choice = "";
-    int[] numbers;
+    static int[] numbers;
 
-    public Excel(String choice, int[] numbers){
-        this.choice = choice;
-        this.numbers = numbers;
-
+    public Excel(int[] numbers){
+        Excel.numbers = numbers;
     }
 
-    public int SelectFun(){
-        System.out.println(choice);
-        int result = 0;
-        switch(this.choice) {
-            case "Autosum" -> result=Autosum();
-            case "Average" -> result=Average();
-            case "Max" -> result=Max();
-            case "Min" -> result=Min();
-        }
-        return result;
-    }
 
-    private int Autosum(){
+
+    public static int Autosum(){
         int result = 0;
         for(int i=0; i <= numbers.length-1; i++){
             result += numbers[i];
@@ -30,11 +18,11 @@ public class Excel {
         return result;
     }
 
-    private int Average(){
+    public static int Average(){
         return Autosum()/numbers.length;
     }
 
-    private int Max(){
+    static int Max(){
         int max = numbers[0];
         for(int i=0;i<=numbers.length-1;i++){
             if(numbers[i]>max){
@@ -44,7 +32,7 @@ public class Excel {
         return max;
     }
 
-    private int Min(){
+    static int Min(){
         int min = numbers[0];
         for(int i=0;i<=numbers.length-1;i++){
             if(numbers[i]<min){
